@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Mobile = function (name) {
+        this.battery=50;
+        this.name=name;
+        this.inbox=[];
+        this.outbox=[];
+        this.message='';
+        this.status=true;
+        this.check = function () {
+            if(this.status){
+                console.log("Dang bat")
+            }else{
+                console.log("Dang tat")
+            }
+        };
+        this.turnOn = function () {
+            this.status=true
+        };
+        this.turnOff = function () {
+            this.status=false
+        };
+        this.xacPin = function () {
+            if(this.battery<100){
+                this.battery++;
+            }
+        };
+        this.soanMessage = function (message) {
+            this.message=message;
+        };
+        this.sendMessage = function (phone) {
+            phone.inbox.push(this.message);
+            this.outbox.push(this.message);
+        };
+        this.getInbox =function () {
+            return this.inbox;
+        };
+        this.getOutbox =function () {
+            return this.outbox;
+        };
+    };
+    let nokia = new Mobile("nokia");
+    let iphone = new Mobile("iphone");
+    let samsung =new Mobile("samsung");
+    nokia.soanMessage("hello");
+    nokia.sendMessage(samsung);
+    iphone.soanMessage("hello samsung");
+    iphone.sendMessage(samsung);
+    console.log(samsung.getInbox());
+    console.log(nokia.getOutbox());
+</script>
+
+</body>
+</html>
